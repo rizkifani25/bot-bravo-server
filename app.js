@@ -2,22 +2,28 @@ const express = require('express')
 const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
+const cors = require('cors')
+const mongoose = require('mongoose');
 
-const indexRouter = require('./routes/index')
-const usersRouter = require('./routes/users')
-const trxRouter = require('./routes/trx')
+// Route
+const allTransactionRouter = require('./api/routes/listAllTransaction')
+const transactionRouter = require('./api/routes/transaction')
+
+mongoose.connect('mongodb://localhost:27017/db-trx', {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+})
 
 const app = express()
 
 app.use(logger('dev'))
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.use('/', indexRouter)
-app.use('/users', usersRouter)
-app.use('/trx', trxRouter)
-
+app.use('/allTransaction', allTransactionRouter)
+app.use('/trx', transactionRouter)
 
 module.exports = app

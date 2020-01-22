@@ -29,5 +29,4 @@ module.exports = async (data) => {
       await driver.closeApp()
       return res
     }
-    
 }
