@@ -15,6 +15,7 @@
     "morgan": "~1.9.1",
     "nodemon": "^2.0.2",
     "selenium-webdriver": "^4.0.0-alpha.5",
+    "shelljs": "^0.8.3",
     "wd": "^1.11.4",
     "webdriverio": "^5.18.4"
   }

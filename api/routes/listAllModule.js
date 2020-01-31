@@ -1,16 +1,14 @@
 const express = require('express')
 const router = express.Router()
 
-const Transaction = require('../models/transactionModels')
+const Modules = require('../models/moduleModels')
 
 router.get('/', (req, res, next) => {
-    let query = req.query.q,
-        limit = req.query.limit
+    let query = req.query.q
 
-    query != '' ? query = { 'trxId': req.query.q } : query = {}
-    limit != null ? limit = parseInt(req.query.limit) : limit = parseInt(limit)
+    query != '' ? query = { 'moduleName': req.query.q } : query = {}
 
-    Transaction.find(query).limit(limit)
+    Modules.find(query)
         .exec()
         .then(docs => {
             res.status(200).json(docs)
