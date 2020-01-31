@@ -27,9 +27,6 @@ module.exports = async (data) => {
     
     try {
       await driver.elementById("com.bca:id/main_btn_bca").click()
-      // await driver.elementById("com.bca:id/dlg_edit_text").type("tanu26")
-      // await getElementByXpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.Button[2]").click()
-      // await driver.evaluate
     } catch (error) {
       let element = await driver.elementById("com.bca:id/dlg_sh_msg").text()
       let res = element
