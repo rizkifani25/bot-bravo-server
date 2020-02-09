@@ -12,6 +12,7 @@ const addNewModuleRouter = require("./api/routes/addNewModule");
 const deleteModuleRouter = require("./api/routes/deleteModule");
 const transactionRouter = require("./api/routes/transaction");
 const adbRouter = require("./api/routes/adbCommand");
+const transactionRouterV2 = require("./api/routes/transactionv2");
 
 mongoose.connect("mongodb://localhost:27017/db-trx", {
   useUnifiedTopology: true,
@@ -32,6 +33,7 @@ app.use("/allModules", allModulesRouter);
 app.use("/addNewModule", addNewModuleRouter);
 app.use("/deleteModule", deleteModuleRouter);
 app.use("/trx", transactionRouter);
+app.use("/v2/trx", transactionRouterV2);
 app.use("/adb", adbRouter);
 
 module.exports = app;

@@ -5,7 +5,7 @@ const modulesSchema = mongoose.Schema({
   moduleName: String,
   moduleMethod: String,
   moduleInfo: String,
-  procedure: Array
+  procedureName: String
 });
 
 module.exports = mongoose.model("Modules", modulesSchema, "modules");
