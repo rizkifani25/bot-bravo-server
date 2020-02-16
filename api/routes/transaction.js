@@ -4,22 +4,6 @@ const mongoose = require("mongoose");
 
 const Transaction = require("../models/transactionModels");
 
-const appium = require("appium");
-const bca = require("../../modules/bca/bca_modules");
-
-// const isServerRunning = async (port, fn) => {
-//     let net = require('net')
-//     let tester = net.createServer()
-//     .once('error', function(err) {
-//         if ( err.code != 'EADDRINUSE') return fn(err)
-//         fn(null, true)
-//     })
-//     .once('listening', async () => {
-//         await appium.main()
-//     })
-//     .listen(port)
-// }
-
 // New Transaction
 router.get("/", async (req, res, next) => {
   let trxId = req.query.trxid;
