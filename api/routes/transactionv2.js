@@ -67,7 +67,7 @@ router.get("/", async (req, res, next) => {
                 nominal: trxNominal
               };
 
-              let url = "http://" + deviceIP + ":8080/bot";
+              let url = "http://" + deviceIP + ":8000/bot";
               let botReply = await getRequest(url, data);
 
               trxSN = "trxSN testing insert new data";
