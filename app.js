@@ -7,11 +7,9 @@ const mongoose = require("mongoose");
 
 // Route
 const allTransactionRouter = require("./api/routes/listAllTransaction");
-const allModulesRouter = require("./api/routes/listAllModule");
-const addNewModuleRouter = require("./api/routes/addNewModule");
-const deleteModuleRouter = require("./api/routes/deleteModule");
+const allDeviceRouter = require("./api/routes/listAllDevice");
+const allCodeRouter = require("./api/routes/listAllCode");
 const transactionRouter = require("./api/routes/transaction");
-const adbRouter = require("./api/routes/adbCommand");
 const transactionRouterV2 = require("./api/routes/transactionv2");
 
 mongoose.connect("mongodb://localhost:27017/db-trx", {
@@ -29,11 +27,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/allTransaction", allTransactionRouter);
-app.use("/allModules", allModulesRouter);
-app.use("/addNewModule", addNewModuleRouter);
-app.use("/deleteModule", deleteModuleRouter);
+app.use("/allDevice", allDeviceRouter);
+app.use("/allCode", allCodeRouter);
 app.use("/trx", transactionRouter);
 app.use("/v2/trx", transactionRouterV2);
-app.use("/adb", adbRouter);
 
 module.exports = app;
