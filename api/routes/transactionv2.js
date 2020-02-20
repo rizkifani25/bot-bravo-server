@@ -2,24 +2,18 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const Transaction = require("../models/transactionModels");
-const Device = require("../models/deviceModels");
-const Code = require("../models/codeModels");
 
 const { getRequest } = require("../fetch/api");
 const { deviceGenerator, codeGenerator } = require("../generator/generator");
 
 router.get("/", async (req, res, next) => {
-  let trxId = req.query.trxid,
-    code = req.query.code,
-    trxTo = req.query.tujuan,
-    trxNominal = req.query.nominal,
-    device = req.query.device,
+  let { trxid, bot, code, tujuan, nominal, device } = req.query;
+  let trxId = trxid,
+    trxTo = tujuan,
+    trxNominal = nominal,
+    botCode = bot.toLowerCase(),
     trxCode = code.toLowerCase(),
-    trxSN,
-    trxStatus,
-    trxDate,
     trxInfo,
-    data,
     deviceIP,
     uniqueCode;
 
@@ -62,7 +56,7 @@ router.get("/", async (req, res, next) => {
             .then(async data => {
               uniqueCode = data["0"]["Code"];
               data = {
-                code: trxCode,
+                app: botCode,
                 tujuan: uniqueCode + trxTo,
                 nominal: trxNominal
               };
@@ -70,20 +64,12 @@ router.get("/", async (req, res, next) => {
               let url = "http://" + deviceIP + ":8000/bot";
               let botReply = await getRequest(url, data);
 
-              trxSN = "trxSN testing insert new data";
-              trxStatus = "trxStatus testing insert new data";
-              trxDate = "trxDate testing insert new data";
               trxInfo = botReply["data"];
 
               let newDataTransaction = new Transaction({
                 _id: new mongoose.Types.ObjectId(),
                 trxId: trxId,
-                trxCode: trxCode,
                 trxTo: trxTo,
-                trxNominal: trxNominal,
-                trxSN: trxSN,
-                trxStatus: trxStatus,
-                trxDate: trxDate,
                 trxInfo: trxInfo
               });
 
