@@ -7,14 +7,14 @@ const { getRequest } = require("../fetch/api");
 const { deviceGenerator, codeGenerator } = require("../generator/generator");
 
 router.get("/", async (req, res, next) => {
-  let { trxid, bot, code, tujuan, nominal, device } = req.query;
+  let { trxid, code, tujuan, nominal, device } = req.query;
   let trxId = trxid,
     trxTo = tujuan,
     trxNominal = nominal,
-    botCode = bot.toLowerCase(),
-    trxCode = code.toLowerCase(),
+    trxCode = code.toUpperCase(),
     trxInfo,
     deviceIP,
+    devicePort,
     uniqueCode;
 
   if (
@@ -49,20 +49,22 @@ router.get("/", async (req, res, next) => {
               deviceIP = data["0"]["deviceIP"];
             })
             .catch(err => {
-              console.log(err);
+              res.status(400).send({
+                data: "Device tidak ditemukan."
+              });
             });
 
           await codeGenerator(trxCode)
             .then(async data => {
               uniqueCode = data["0"]["Code"];
-              data = {
-                app: botCode,
+              devicePort = data["0"]["Port"];
+              let params = {
                 tujuan: uniqueCode + trxTo,
                 nominal: trxNominal
               };
 
-              let url = "http://" + deviceIP + ":8000/main-route";
-              let botReply = await getRequest(url, data);
+              let url = "http://" + deviceIP + ":" + devicePort + "/bot";
+              let botReply = await getRequest(url, params);
 
               trxInfo = botReply["data"];
 
@@ -74,11 +76,15 @@ router.get("/", async (req, res, next) => {
               });
 
               newDataTransaction.save().then(result => {
-                res.status(201).json(result);
+                res.status(201).send({
+                  data: result
+                });
               });
             })
             .catch(err => {
-              console.log(err);
+              res.status(400).send({
+                data: "Code tidak ditemukan."
+              });
             });
         }
       })
