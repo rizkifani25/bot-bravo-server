@@ -5,16 +5,18 @@ const logger = require("morgan");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
-// Route
-const addNewDeviceRouter = require("./api/routes/addNewDevice");
-const addNewCodeRouter = require("./api/routes/addNewCode");
-const deleteCodeRouter = require("./api/routes/deleteCode");
-const deleteDeviceRouter = require("./api/routes/deleteDevice");
-const allTransactionRouter = require("./api/routes/listAllTransaction");
-const allDeviceRouter = require("./api/routes/listAllDevice");
-const allCodeRouter = require("./api/routes/listAllCode");
-const transactionRouter = require("./api/routes/transaction");
-const transactionRouterV2 = require("./api/routes/transactionv2");
+// code
+const addNewCodeRouter = require("./api/routes/code/add");
+const deleteCodeRouter = require("./api/routes/code/delete");
+const allCodeRouter = require("./api/routes/code/list");
+// device
+const addNewDeviceRouter = require("./api/routes/device/add");
+const deleteDeviceRouter = require("./api/routes/device/delete");
+const allDeviceRouter = require("./api/routes/device/list");
+// transaction
+const transactionRouterV2 = require("./api/routes/transaction/bot");
+const allTransactionRouter = require("./api/routes/transaction/list");
+const transactionRouter = require("./api/routes/transaction/bot/transaction");
 
 mongoose.connect("mongodb://localhost:27017/db-trx", {
   useUnifiedTopology: true,

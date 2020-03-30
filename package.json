@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon node ./bin/www"
+    "start": "nodemon node ./bin/www",
+    "cookies": "node ./api/utils/cookiesCheck/index.js"
   },
   "dependencies": {
-    "appium": "^1.16.0",
     "axios": "^0.19.2",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
@@ -15,6 +15,11 @@
     "mongoose": "^5.8.9",
     "morgan": "~1.9.1",
     "nodemon": "^2.0.2",
+    "prompt-sync": "^4.2.0",
+    "puppeteer": "^2.1.1",
+    "puppeteer-extra": "^3.1.9",
+    "puppeteer-extra-plugin-adblocker": "^2.11.3",
+    "puppeteer-extra-plugin-stealth": "^2.4.9",
     "shelljs": "^0.8.3",
     "webdriverio": "^5.18.4"
   }
