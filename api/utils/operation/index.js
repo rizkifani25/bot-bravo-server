@@ -4,7 +4,7 @@ const escapeXpathString = str => {
 };
 
 // is exist using selector
-exports.isExist = async selector => {
+const isExist = async (page, selector) => {
   await page
     .waitForSelector(selector, {
       visible: true
@@ -20,7 +20,7 @@ exports.isExist = async selector => {
 };
 
 // click by tag
-exports.clickByTag = async (page, text, tag) => {
+const clickByTag = async (page, text, tag) => {
   await page.waitFor(700);
   const escapedText = escapeXpathString(text);
   const linkHandlers = await page.$x(
@@ -34,7 +34,7 @@ exports.clickByTag = async (page, text, tag) => {
 };
 
 // click by property
-exports.clickByProperty = async (page, text, property) => {
+const clickByProperty = async (page, text, property) => {
   await page.waitFor(700);
   try {
     await page.click("[" + property + '="' + text + '"]');
@@ -45,7 +45,7 @@ exports.clickByProperty = async (page, text, property) => {
 };
 
 // input by property
-exports.inputByProperty = async (page, text, property, input) => {
+const inputByProperty = async (page, text, property, input) => {
   await page.waitFor(700);
   try {
     await page.type("[" + property + '="' + text + '"]', input);
@@ -56,7 +56,7 @@ exports.inputByProperty = async (page, text, property, input) => {
 };
 
 // get text using selector
-exports.getText = async (page, selector) => {
+const getText = async (page, selector) => {
   try {
     await page.waitFor(1500);
     const [elementHandle] = await page.$x(selector);
@@ -66,4 +66,8 @@ exports.getText = async (page, selector) => {
   } catch (error) {
     return error;
   }
+};
+
+module.exports = {
+  isExist: isExist
 };

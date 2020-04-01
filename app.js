@@ -14,9 +14,13 @@ const addNewDeviceRouter = require("./api/routes/device/add");
 const deleteDeviceRouter = require("./api/routes/device/delete");
 const allDeviceRouter = require("./api/routes/device/list");
 // transaction
-const transactionRouterV2 = require("./api/routes/transaction/bot");
+const transactionRouterV2 = require("./api/routes/bot");
 const allTransactionRouter = require("./api/routes/transaction/list");
-const transactionRouter = require("./api/routes/transaction/bot/transaction");
+const transactionRouter = require("./api/routes/bot/transaction");
+// tokped
+const checkTokpedCookiesRouter = require("./api/routes/tokped/check");
+const openTokpedRouter = require("./api/routes/tokped/open");
+const transactionTokpedRouter = require("./api/routes/tokped/trx");
 
 mongoose.connect("mongodb://localhost:27017/db-trx", {
   useUnifiedTopology: true,
@@ -41,5 +45,9 @@ app.use("/deleteCode", deleteCodeRouter);
 app.use("/deleteDevice", deleteDeviceRouter);
 app.use("/trx", transactionRouter);
 app.use("/v2/trx", transactionRouterV2);
+
+app.use("/tokped/checkCookies", checkTokpedCookiesRouter);
+app.use("/tokped/open", openTokpedRouter);
+app.use("/tokped/trx", transactionTokpedRouter);
 
 module.exports = app;
