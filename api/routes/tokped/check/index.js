@@ -5,11 +5,11 @@ const StealthPlugin = require("puppeteer-extra-plugin-stealth");
 puppeteer.use(StealthPlugin());
 
 router.get("/", async (req, res, next) => {
-  const { url } = req.query;
+  const url = "mitra.tokopedia.com";
 
   const browser = await puppeteer.launch({
     headless: false,
-    userDataDir: "./puppeteer_data"
+    userDataDir: "/home/testing/puppeteer/puppeteer_data"
   });
   const page = await browser.newPage();
   await page.setViewport({
@@ -18,40 +18,33 @@ router.get("/", async (req, res, next) => {
     deviceScaleFactor: 1
   });
 
-  if (!url) {
-    res.status(400).send({
-      message: "URL tidak diisi."
-    });
-  } else {
-    await page
-      .goto("https://" + url, { waitUntil: "load" })
-      .then(async () => {
-        const pageCookies = await page.cookies("https://" + url);
-        let session = pageCookies.filter(e => {
-          return (
-            e.name == "tuid" &&
-            e.domain == ".tokopedia.com" &&
-            e.session == true
-          );
-        });
-
-        if (session.length == 1) {
-          res.status(200).send({
-            message: "Session mitra.tokopedia.com ditemukan."
-          });
-        } else {
-          res.status(200).send({
-            message:
-              "Session mitra.tokopedia.com tidak ditemukan. Silahkan login ulang."
-          });
-        }
-      })
-      .catch(() => {
-        res.status(400).send({
-          message: "Gagal membuka browser."
-        });
+  await page
+    .goto("https://" + url, { waitUntil: "load" })
+    .then(async () => {
+      const pageCookies = await page.cookies("https://" + url);
+      let session = pageCookies.filter(e => {
+        return (
+          e.name == "tuid" && e.domain == ".tokopedia.com" && e.session == true
+        );
       });
-  }
+
+      if (session.length == 1) {
+        res.status(200).send({
+          message: "Session mitra.tokopedia.com ditemukan."
+        });
+      } else {
+        res.status(200).send({
+          message:
+            "Session mitra.tokopedia.com tidak ditemukan. Silahkan login ulang."
+        });
+      }
+    })
+    .catch(err => {
+      if (err) throw err;
+      res.status(400).send({
+        message: "Gagal membuka browser."
+      });
+    });
 });
 
 module.exports = router;

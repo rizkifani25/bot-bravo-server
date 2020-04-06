@@ -1,0 +1,233 @@
+[
+  {
+    "name": "AMP_TOKEN",
+    "value": "%24NOT_FOUND",
+    "domain": ".tokopedia.com",
+    "path": "/",
+    "expires": 1586095653,
+    "size": 21,
+    "httpOnly": false,
+    "secure": false,
+    "session": false
+  },
+  {
+    "name": "_dc_gtm_UA-126956641-2",
+    "value": "1",
+    "domain": ".tokopedia.com",
+    "path": "/",
+    "expires": 1586092112,
+    "size": 23,
+    "httpOnly": false,
+    "secure": false,
+    "session": false
+  },
+  {
+    "name": "nr-user-session",
+    "value": "43164328-a4ae-42b6-98a3-bf3c389b89d5",
+    "domain": "mitra.tokopedia.com",
+    "path": "/",
+    "expires": 1586093852.296064,
+    "size": 51,
+    "httpOnly": false,
+    "secure": false,
+    "session": false
+  },
+  {
+    "name": "bm_sz",
+    "value": "BF7247570C38A9B6ACD721479452276E~YAAQlvpWuN/iOgtxAQAAzQt0SgdCaTriWl2RA7lR4grLS86HKuKNJkbsYpKEl2N3W5HmFj2CsdweHPfqPLGvlSKH92f+4WpvmMgmZrxm46YNUJapluPpCJV5AVvfkluy11oApd8eHvTmnVngE4JeGNZ+0Q1OOpy0Wx7eBaq4uQfi17Favy6TXmG+JBmXNuw72nhB",
+    "domain": ".tokopedia.com",
+    "path": "/",
+    "expires": 1586106452.09571,
+    "size": 234,
+    "httpOnly": true,
+    "secure": false,
+    "session": false
+  },
+  {
+    "name": "l",
+    "value": "1",
+    "domain": ".tokopedia.com",
+    "path": "/",
+    "expires": 1596460052.095476,
+    "size": 2,
+    "httpOnly": true,
+    "secure": true,
+    "session": false
+  },
+  {
+    "name": "_abck",
+    "value": "A0B4AA3A35A71C4F49868C9232B2145F~-1~YAAQVZTerQi4CRFxAQAAOagoOgOSbDIhpIbZ8YiEPHGQ5BWa/XBWeiQG7hjknzEb2nQzjANQCe0UxgUgFRU/p6ISrSbB794aLQwMSiANV4IshFYekAPMp/YzPI6DtJW9WJ7S8jqC61iHyweAb57XWAQzxkikAay1A5Hyge3jKt5sIsuLVSd9KtqwNCoigPSC6516HkgHGRXwO2ODsuANY6sLfB1y6b/POEhhAQbtYzQZHfZv7ufdjRoMyE4U7Kur/Gtw8b1qKFl92WTK7WKdccapd5BQJb3O8Q/ntVfN7k6No4sEvWYTplh5eMyR~-1~-1~-1",
+    "domain": ".tokopedia.com",
+    "path": "/",
+    "expires": 1617354674.296853,
+    "size": 366,
+    "httpOnly": false,
+    "secure": true,
+    "session": false
+  },
+  {
+    "name": "_gid",
+    "value": "GA1.3.994197877.1586092052",
+    "domain": ".mitra.tokopedia.com",
+    "path": "/",
+    "expires": 1586178454,
+    "size": 30,
+    "httpOnly": false,
+    "secure": false,
+    "session": false
+  },
+  {
+    "name": "aus",
+    "value": "1",
+    "domain": ".tokopedia.com",
+    "path": "/",
+    "expires": 1596460052.095526,
+    "size": 4,
+    "httpOnly": false,
+    "secure": false,
+    "session": false
+  },
+  {
+    "name": "TOPRTK",
+    "value": "7KyRtlKqTmu_L4g-w2-foA",
+    "domain": ".tokopedia.com",
+    "path": "/",
+    "expires": 1591276052.095603,
+    "size": 28,
+    "httpOnly": true,
+    "secure": true,
+    "session": false
+  },
+  {
+    "name": "tuid",
+    "value": "6704358",
+    "domain": ".tokopedia.com",
+    "path": "/",
+    "expires": -1,
+    "size": 11,
+    "httpOnly": false,
+    "secure": false,
+    "session": true
+  },
+  {
+    "name": "TOPATK",
+    "value": "IVskybgeTEa556FwzDzKeg",
+    "domain": ".tokopedia.com",
+    "path": "/",
+    "expires": 1591276052.095567,
+    "size": 28,
+    "httpOnly": true,
+    "secure": true,
+    "session": false
+  },
+  {
+    "name": "_gid",
+    "value": "GA1.2.994197877.1586092052",
+    "domain": ".tokopedia.com",
+    "path": "/",
+    "expires": 1586178452,
+    "size": 30,
+    "httpOnly": false,
+    "secure": false,
+    "session": false
+  },
+  {
+    "name": "ISID",
+    "value": "%7B%22mitra.tokopedia.com%22%3A%22bWl0cmEudG9rb3BlZGlhLmNvbQ%3D%3D.808b114318aaf45a3b42d298031e613b.1585818674921.1585820497013.1586092052487.11%22%7D",
+    "domain": ".mitra.tokopedia.com",
+    "path": "/",
+    "expires": 33122092052.49048,
+    "size": 154,
+    "httpOnly": false,
+    "secure": false,
+    "session": false
+  },
+  {
+    "name": "_SID_Tokopedia_",
+    "value": "iTb23wNBPjIdFGVwarv_hTL9g2Xd9OhTpfgSlvygVZH598vtpo9lxJxrkxWG54SY-CdRMoRn8fdx8VcXHFjAX-qd0XY20u6eSjA7N0iNT_buDioMYkiJvAZ8pB2RIqPa",
+    "domain": ".tokopedia.com",
+    "path": "/",
+    "expires": 1596460052.095333,
+    "size": 143,
+    "httpOnly": true,
+    "secure": true,
+    "session": false
+  },
+  {
+    "name": "RT",
+    "value": "\"z=1&dm=tokopedia.com&si=ca93d64e-eebf-424f-ad96-2b26d7014852&ss=k8n294wf&sl=1&tt=512&bcn=%2F%2F684d0d38.akstat.io%2F&ld=51q\"",
+    "domain": ".tokopedia.com",
+    "path": "/",
+    "expires": 1586696854,
+    "size": 127,
+    "httpOnly": false,
+    "secure": false,
+    "session": false
+  },
+  {
+    "name": "_gat_UA-126956641-2",
+    "value": "1",
+    "domain": ".mitra.tokopedia.com",
+    "path": "/",
+    "expires": 1586092113,
+    "size": 20,
+    "httpOnly": false,
+    "secure": false,
+    "session": false
+  },
+  {
+    "name": "_ga",
+    "value": "GA1.2.2073870977.1585818675",
+    "domain": ".tokopedia.com",
+    "path": "/",
+    "expires": 1649164052,
+    "size": 30,
+    "httpOnly": false,
+    "secure": false,
+    "session": false
+  },
+  {
+    "name": "_ga",
+    "value": "GA1.3.2073870977.1585818675",
+    "domain": ".mitra.tokopedia.com",
+    "path": "/",
+    "expires": 1649164054,
+    "size": 30,
+    "httpOnly": false,
+    "secure": false,
+    "session": false
+  },
+  {
+    "name": "DID",
+    "value": "2c4de9afd13ed0a839dc685f6b57a4b5521d06247f79ee2b713e69623462de799ec6d735b3e9c9ff355225b5dbda871d",
+    "domain": ".tokopedia.com",
+    "path": "/",
+    "expires": 1901178674.296672,
+    "size": 99,
+    "httpOnly": true,
+    "secure": true,
+    "session": false
+  },
+  {
+    "name": "DID_JS",
+    "value": "MmM0ZGU5YWZkMTNlZDBhODM5ZGM2ODVmNmI1N2E0YjU1MjFkMDYyNDdmNzllZTJiNzEzZTY5NjIzNDYyZGU3OTllYzZkNzM1YjNlOWM5ZmYzNTUyMjViNWRiZGE4NzFk47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
+    "domain": ".tokopedia.com",
+    "path": "/",
+    "expires": 1901178674.296714,
+    "size": 178,
+    "httpOnly": false,
+    "secure": true,
+    "session": false
+  },
+  {
+    "name": "retail-onboarding",
+    "value": "done",
+    "domain": "mitra.tokopedia.com",
+    "path": "/",
+    "expires": 253402300799,
+    "size": 21,
+    "httpOnly": false,
+    "secure": false,
+    "session": false
+  }
+]

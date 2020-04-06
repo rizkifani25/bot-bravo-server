@@ -24,15 +24,15 @@ router.get("/", async (req, res, next) => {
     trxNominal != null &&
     device != null
   ) {
-    Transaction.findOne(
+    await Transaction.findOne(
       {
-        trxId: trxId
+        trxId: trxId,
       },
       { _id: 0, __v: 0 }
     )
       .exec()
-      .then(async docs => {
-        if (docs.length == 1) {
+      .then(async (docs) => {
+        if (docs != null) {
           console.log(
             "Transaksi dengan trxId " + trxId + " sudah ada. Menampilkan data."
           );
@@ -45,22 +45,22 @@ router.get("/", async (req, res, next) => {
           );
 
           await deviceGenerator(device)
-            .then(data => {
+            .then((data) => {
               deviceIP = data["0"]["deviceIP"];
             })
-            .catch(err => {
+            .catch((err) => {
               res.status(400).send({
-                data: "Device tidak ditemukan."
+                data: "Device tidak ditemukan.",
               });
             });
 
           await codeGenerator(trxCode)
-            .then(async data => {
+            .then(async (data) => {
               uniqueCode = data["0"]["Code"];
               devicePort = data["0"]["Port"];
               let params = {
                 tujuan: uniqueCode + trxTo,
-                nominal: trxNominal
+                nominal: trxNominal,
               };
 
               let url = "http://" + deviceIP + ":" + devicePort + "/bot";
@@ -72,28 +72,28 @@ router.get("/", async (req, res, next) => {
                 _id: new mongoose.Types.ObjectId(),
                 trxId: trxId,
                 trxTo: trxTo,
-                trxInfo: trxInfo
+                trxInfo: trxInfo,
               });
 
-              newDataTransaction.save().then(result => {
+              newDataTransaction.save().then((result) => {
                 res.status(201).send({
-                  data: result
+                  data: result,
                 });
               });
             })
-            .catch(err => {
+            .catch((err) => {
               res.status(400).send({
-                data: "Code tidak ditemukan."
+                data: "Code tidak ditemukan.",
               });
             });
         }
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   } else {
     res.status(422).json({
-      message: "Parameter tidak dapat diproses. Parameter tidak lengkap."
+      message: "Parameter tidak dapat diproses. Parameter tidak lengkap.",
     });
   }
 });

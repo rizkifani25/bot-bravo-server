@@ -1,22 +1,61 @@
-const escapeXpathString = str => {
+const escapeXpathString = (str) => {
   const splitedQuotes = str.replace(/'/g, `', "'", '`);
   return `concat('${splitedQuotes}', '')`;
 };
 
 // is exist using selector
 const isExist = async (page, selector) => {
+  let response;
   await page
-    .waitForSelector(selector, {
-      visible: true
+    .waitFor(1500)
+    .then(async () => {
+      const el = await page.$x(selector);
+      if (el.length > 0) {
+        response = true;
+      } else {
+        response = false;
+      }
     })
-    .then(response => {
-      console.log(selector + "exist");
-      return true;
-    })
-    .catch(error => {
-      console.log(selector + " doesn't exist");
-      return false;
+    .catch((err) => {
+      console.log(err);
     });
+  return response;
+};
+
+// click by xpath
+const clickByXPath = async (page, selector) => {
+  let response = await isExist(page, selector);
+  if (!response) {
+    console.log(selector + " Element tidak ditemukan.");
+    return;
+  } else {
+    await page
+      .waitFor(700)
+      .then(async () => {
+        const el = await page.$x(selector);
+        if (el.length > 0) {
+          el[0].click();
+          return;
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+};
+
+const getTextByXPath = async (page, selector) => {
+  let response = await isExist(page, selector);
+  if (!response) {
+    console.log(selector + " Element tidak ditemukan.");
+    return;
+  } else {
+    const [elementHandle] = await page.$x(selector);
+    const propertyHandle = await elementHandle.getProperty("innerHTML");
+    const propertyValue = await propertyHandle.jsonValue();
+    response = propertyValue;
+    return response;
+  }
 };
 
 // click by tag
@@ -58,7 +97,7 @@ const inputByProperty = async (page, text, property, input) => {
 // get text using selector
 const getText = async (page, selector) => {
   try {
-    await page.waitFor(1500);
+    await page.waitFor(3000);
     const [elementHandle] = await page.$x(selector);
     const propertyHandle = await elementHandle.getProperty("innerHTML");
     const propertyValue = await propertyHandle.jsonValue();
@@ -69,5 +108,11 @@ const getText = async (page, selector) => {
 };
 
 module.exports = {
-  isExist: isExist
+  isExist: isExist,
+  clickByXPath: clickByXPath,
+  getTextByXPath: getTextByXPath,
+  getText: getText,
+  clickByProperty: clickByProperty,
+  clickByTag: clickByTag,
+  inputByProperty: inputByProperty,
 };
