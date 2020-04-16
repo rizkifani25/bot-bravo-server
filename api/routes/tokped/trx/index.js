@@ -5,7 +5,7 @@ const Transaction = require("../../../models/transactionModel");
 const { pulsaTokped } = require("../../../utils/flow/tokped");
 
 router.get("/", async (req, res, next) => {
-  const { trxid, tujuan, nominal } = req.query;
+  const { trxid, tujuan, nominal, mode } = req.query;
 
   if (trxid && tujuan && nominal) {
     await Transaction.findOne(
@@ -28,7 +28,7 @@ router.get("/", async (req, res, next) => {
               " belum ada. Memulai transaksi baru."
           );
 
-          await pulsaTokped(tujuan, nominal).then(async (trxInfo) => {
+          await pulsaTokped(tujuan, nominal, mode).then(async (trxInfo) => {
             console.log(trxInfo);
             let newDataTransaction = new Transaction({
               _id: new mongoose.Types.ObjectId(),
