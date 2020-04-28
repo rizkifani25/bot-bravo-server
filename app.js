@@ -22,10 +22,17 @@ const checkTokpedCookiesRouter = require("./api/routes/tokped/check");
 const openTokpedRouter = require("./api/routes/tokped/open");
 const transactionTokpedRouter = require("./api/routes/tokped/trx");
 
-mongoose.connect("mongodb://localhost:27017/db-trx", {
-  useUnifiedTopology: true,
-  useNewUrlParser: true
-});
+mongoose
+  .connect("mongodb://localhost:27017/db-trx", {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  })
+  .then(() => {
+    console.log("DB Connected.");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 const app = express();
 

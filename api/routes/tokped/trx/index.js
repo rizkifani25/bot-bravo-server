@@ -28,21 +28,38 @@ router.get("/", async (req, res, next) => {
               " belum ada. Memulai transaksi baru."
           );
 
-          await pulsaTokped(tujuan, nominal, mode).then(async (trxInfo) => {
-            console.log(trxInfo);
-            let newDataTransaction = new Transaction({
-              _id: new mongoose.Types.ObjectId(),
-              trxId: trxid,
-              trxTo: tujuan,
-              trxInfo: trxInfo,
-            });
-
-            newDataTransaction.save().then((result) => {
-              res.status(201).send({
-                data: result,
-              });
-            });
+          let newDataTransaction = new Transaction({
+            _id: new mongoose.Types.ObjectId(),
+            trxId: trxid,
+            trxTo: tujuan,
+            trxInfo: "Testing",
           });
+
+          newDataTransaction.save().then((result) => {
+            let filterResult = {
+              trxId: result.trxId,
+              trxTo: result.trxTo,
+              trxInfo: result.trxInfo,
+            };
+
+            res.status(201).send({ data: filterResult });
+          });
+
+          // await pulsaTokped(tujuan, nominal, mode).then(async (trxInfo) => {
+          //   console.log(trxInfo);
+          //   let newDataTransaction = new Transaction({
+          //     _id: new mongoose.Types.ObjectId(),
+          //     trxId: trxid,
+          //     trxTo: tujuan,
+          //     trxInfo: trxInfo,
+          //   });
+
+          //   newDataTransaction.save().then((result) => {
+          //     res.status(201).send({
+          //       data: result,
+          //     });
+          //   });
+          // });
         }
       });
   } else {
